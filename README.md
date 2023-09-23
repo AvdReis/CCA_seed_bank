@@ -4,11 +4,8 @@ This is the code used to analyze the raw fastq files using bash scripts, and sub
 ## Step 1:
 File: Cutadapt.txt
 Cutadapt was used to remove the primers.
-Gene regions were pooled for indexing:
-16S-ITS
-23S-COI
-rbcL-tufA
-18S
+Gene regions were pooled for indexing: 16S-ITS; 23S-COI; rbcL-tufA; 18S.
+A shortcut to making the path.txt needing in next step can be found here.  
 
 ## Step 2:
 File: P1_Q2.bash
