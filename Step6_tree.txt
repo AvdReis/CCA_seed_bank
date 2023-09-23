@@ -1,0 +1,28 @@
+#Note: This is typically has a fast run time and can be run on the terminal with not wanting to submit a script. Easily converted to a bash script.
+#This creates .nwk files from sequences saved using R.
+
+module load QIIME2/2022.2
+
+for i in ./*txt; \
+do \
+primer=$(echo "$i" | sed 's/_.*//'); \
+qiime tools import \
+--input-path ./"$i" \
+--output-path ./"${primer}".qza \
+--type 'FeatureData[Sequence]'; done
+
+for i in ./*qza; \
+do \
+primer=$(echo "$i" | sed 's/.qza//'); \
+qiime phylogeny align-to-tree-mafft-fasttree \
+--i-sequences "$i" \
+--o-alignment "${primer}"_aligned \
+--o-masked-alignment "${primer}"_masked_aligned \
+--o-tree "${primer}"_unrooted.tree \
+--o-rooted-tree "${primer}"_rooted.tree \
+--verbose; done > tree.slurm
+
+#Example to extract either unrooted or rooted trees
+mkdir unrooted_trees
+
+for i in ./*unrooted.tree.qza; do primer=$(echo "$i" | sed 's/_.*//'); unzip "$i" -d rm.tree; cp rm.tree/*/data/*.nwk ./unrooted_trees/"${primer}"_tree.nwk; rm -r rm.tree; done
