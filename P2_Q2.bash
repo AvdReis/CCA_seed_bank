@@ -1,9 +1,11 @@
 #!/bin/bash
-#SBATCH -J Q2_P2_16S_CCA
-#SBATCH -A uoa03362
+#SBATCH -J Q2_P2_CCA
+#SBATCH -A xxx #fill in
 #SBATCH --time=10:00:00
 #SBATCH --mem=50GB
 #SBATCH --cpus-per-task=8
+#SBATCH --mail-user=xxx #fill in email address for run notifications
+#SBATCH --mail-type=ALL
 
 module load QIIME2/2022.2
 
