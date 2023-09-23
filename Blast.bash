@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH -J LU_2022
-#SBATCH -A uoa03362
+#SBATCH -J Blast_CCA
+#SBATCH -A xxx #fill in
 #SBATCH --time=24:00:00
 #SBATCH --mem=100GB
 #SBATCH --cpus-per-task=15
-#SBATCH --mail-user=avan398@aucklanduni.ac.nz
+#SBATCH --mail-user=xxx #fill in email address for run notifications
 #SBATCH --mail-type=ALL
 
 module load BLAST/2.13.0-GCC-11.3.0
