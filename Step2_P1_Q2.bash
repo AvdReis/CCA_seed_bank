@@ -12,7 +12,7 @@ module load QIIME2/2022.2
 #Importing our files into qiime format
 qiime tools import \
   --type 'SampleData[PairedEndSequencesWithQuality]' \
-  --input-path ./path.txt \
+  --input-path ./path.txt \ #Look at cutadapt code for a short cut to make path.txt
   --output-path CCA_pe_demux.qza \
   --input-format PairedEndFastqManifestPhred33V2
 
