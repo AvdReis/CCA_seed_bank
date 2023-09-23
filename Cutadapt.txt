@@ -1,0 +1,26 @@
+#Note: This is typically has a very fast run time and can be run on the terminal with not wanting to submit a script. Easily converted to a bash script.
+#This loops through the fastq.qz files, expected in a directory called raw_data. Multiple primers can be trimmed at once. Use a '#' to comment out ones not needed.
+#This respective sequences from the different primers are saved to different files. These new files are then processed further in Qiime 2.
+
+module load cutadapt/3.5-gimkl-2020a-Python-3.8.2
+
+for i in ./raw_data/*R1*.fastq.gz; \
+do \
+SAMPLE=$(echo ${i} | sed "s/_R1_\001\.fastq.gz//"); \
+echo ${SAMPLE}_R1_001.fastq.gz ${SAMPLE}_R2_001.fastq.gz; \
+cutadapt \
+--discard-untrimmed \
+--action=trim \
+-e 0 \
+--no-indels \
+-g "16S=^CCTACGGGNGGCWGCAG" -G "^GACTACHVGGGTATCTAATCC" \
+-g "ITS=^GCATCGATGAAGAACGCAGC" -G "^TCCTCCGCTTATTGATATGC" \
+-g "18S=^TTAAAAAGCKCGTAGTTG" -G "^ACTTTCGTTCTTGAT" \
+-g "23S=^GGACAGAAAGACCCTATGAA" -G "^TCAGCCTGTTATCCCTAGAG" \ 
+-g "COI=^GGWACWGGWTGAACWGTWTAYCCYCC" -G "^TANACYTCNGGRTGNCCRAARAAYCA" \
+-g "tufA=^ACNGGNCGNGGNACNGT" -G "^CCTTCNCGAATMGCRAAW" \
+-g "rbcL=^GGTACTTGGACAACWGTWTGGAC" -G "^GAAACGGTCTCKCCARCGCAT" \
+-o "${SAMPLE}_{name}_R1_001.fastq.gz" \
+-p "${SAMPLE}_{name}_R2_001.fastq.gz" \
+${SAMPLE}_R1_001.fastq.gz  ${SAMPLE}_R2_001.fastq.gz; \
+done >> cutadapt.slurm
