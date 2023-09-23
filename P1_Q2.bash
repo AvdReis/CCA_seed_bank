@@ -4,6 +4,8 @@
 #SBATCH --time=1:00:00
 #SBATCH --mem-per-cpu=4GB
 #SBATCH --cpus-per-task=2
+#SBATCH --mail-user=xxx #fill in email address for run notifications
+#SBATCH --mail-type=ALL
 
 module load QIIME2/2022.2
 
