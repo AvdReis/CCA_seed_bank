@@ -10,7 +10,7 @@
 module load BLAST/2.13.0-GCC-11.3.0
 module load BLASTDB/2022-07
 
-export TMPDIR=/nesi/nobackup/uoa03362/tmp_${SLURM_JOB_ID}
+export TMPDIR=/path/to/temp/directory/can/be/stored/tmp_${SLURM_JOB_ID}
 mkdir -p $TMPDIR
 export TMPDIR
 
