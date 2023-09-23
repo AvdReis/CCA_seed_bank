@@ -21,3 +21,11 @@ Need to adjust trunc values for each gene as per resulting data from P1_Q2.bash
 ## Step 4
 File: Blast.bash
 Assigning taxonomy using the GenBank nucleotide DNA database using megaBLAST.
+
+## Step 5
+File: Step5_CCA_R_code.R
+Code used for data filtering, analyses and figure production in R.
+
+## Step 6
+File: Step6_tree.txt
+Code used for making phylogenetic tree files.
