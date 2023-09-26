@@ -1,4 +1,4 @@
-# CCA_prelim
+# CCA_seed_bank
 This is the code used to analyze the raw fastq files using bash scripts, and subsequently compile/filter the data in R.
 
 ## Step 1:
